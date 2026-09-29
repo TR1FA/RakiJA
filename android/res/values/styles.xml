@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RakiJA</string>
+    <color name="ikonica_pozadina">#FFFFFF</color>
+    <color name="pozadina">#FBF6EF</color>
+
+    <style name="AppTheme" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/pozadina</item>
+        <item name="android:statusBarColor">@color/pozadina</item>
+        <item name="android:navigationBarColor">@color/pozadina</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

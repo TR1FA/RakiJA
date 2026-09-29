@@ -111,7 +111,15 @@ h2 { font-size: 17px; margin: 0 0 12px; letter-spacing: -.01em; }
 .tile-text small { color: var(--muted); font-size: 14px; line-height: 1.35; }
 .chev { margin-left: auto; flex: none; color: var(--muted); }
 
-.version { text-align: center; color: var(--muted); font-size: 13px; margin-top: 36px; opacity: .8; }
+.apk-link {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 18px; padding: 14px;
+  border: 1.5px dashed var(--line); border-radius: 16px;
+  color: var(--copper-strong); font-weight: 650; text-decoration: none;
+}
+
+.version { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-top: 36px; color: var(--muted); font-size: 13px; }
+.version .author { font-size: 15px; font-weight: 650; color: var(--text); opacity: .75; letter-spacing: .01em; }
 
 /* ---------- Gornja traka ---------- */
 .topbar {

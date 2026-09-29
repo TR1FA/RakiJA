@@ -45,6 +45,16 @@ def main() -> None:
     render(art, 512, 0.72).save(OUT / "icon-maskable-512.png", optimize=True)
     print("Ikonice napravljene u", OUT)
 
+    # Android aplikacija (APK): obične ikonice po gustini ekrana + prednji sloj
+    # adaptivne ikonice (vidljiv je samo središnji krug od 66/108 = 61 %).
+    res = ROOT / "android" / "res"
+    for folder, size in [("mdpi", 48), ("hdpi", 72), ("xhdpi", 96), ("xxhdpi", 144), ("xxxhdpi", 192)]:
+        (res / f"mipmap-{folder}").mkdir(parents=True, exist_ok=True)
+        render(art, size, 0.90).save(res / f"mipmap-{folder}" / "ic_launcher.png", optimize=True)
+    (res / "drawable-nodpi").mkdir(parents=True, exist_ok=True)
+    render(art, 432, 0.60).save(res / "drawable-nodpi" / "ic_launcher_foreground.png", optimize=True)
+    print("Android ikonice napravljene u", res)
+
 
 if __name__ == "__main__":
     main()

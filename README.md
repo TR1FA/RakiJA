@@ -12,6 +12,16 @@ Isti kod radi na iPhone-u i na Androidu.
 
 Poslije prvog otvaranja radi i bez interneta.
 
+**Android aplikacija (APK):**
+https://github.com/TR1FA/RakiJA/releases/latest/download/RakiJA.apk
+— ima sve fajlove u sebi i radi bez interneta. iPhone ne može instalirati
+APK; tamo se koristi link iznad.
+
+Pravljenje APK-a: `python android/build.py` → `dist/RakiJA.apk`, pa
+`gh release create vX.Y dist/RakiJA.apk`. Ključ za potpis je u
+`android/keystore/` (nije na GitHub-u) — sačuvaj ga, bez njega nova verzija
+ne može da se instalira preko stare.
+
 ## Alati
 
 1. **Indikator vrenja komine** — upišeš očitanu vrijednost (°Oe) i temperaturu

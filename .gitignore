@@ -1,2 +1,7 @@
 __pycache__/
 *.pyc
+
+# Android: međufajlovi, gotov APK (ide na GitHub Releases) i ključ za potpis
+android/build/
+android/keystore/
+dist/

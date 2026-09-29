@@ -649,7 +649,12 @@
 
   route();
 
-  if ('serviceWorker' in navigator && window.isSecureContext) {
+  // Android aplikacija (APK) dodaje "RakiJA-Android" u user agent; ona već ima
+  // sve fajlove u sebi, pa joj ne trebaju ni service worker ni link za preuzimanje.
+  var inApk = /RakiJA-Android/.test(navigator.userAgent);
+  $('apkLink').hidden = inApk || !/Android/i.test(navigator.userAgent);
+
+  if (!inApk && 'serviceWorker' in navigator && window.isSecureContext) {
     navigator.serviceWorker.register('sw.js').catch(function () {});
   }
 })();
