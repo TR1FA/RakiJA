@@ -17,7 +17,21 @@ Poslije prvog otvaranja radi i bez interneta.
 1. **Indikator vrenja komine** — upišeš očitanu vrijednost (°Oe) i temperaturu
    uzorka, aplikacija daje stvarnu vrijednost na 20 °C i kaže da li je vrenje
    završeno za izabrano voće. Mjerenja se čuvaju na telefonu.
-2. *Uskoro* — mjesto za drugi alat.
+2. **Jačina rakije** — jačina sa alkoholometra (u % vol ili gradima) i
+   temperatura rakije → stvarna jačina na 20 °C, tablica korekcije 10–35 °C i
+   pretvaranje % ↔ gradi.
+3. **Razblaživanje rakije** — jačina, temperatura i količina rakije + željena
+   jačina → koliko litara vode dodati i koliko rakije se dobije.
+
+### Jačina i razblaživanje
+
+- Korekcija temperature i razblaživanje računaju se po međunarodnoj formuli za
+  gustinu alkohola i vode (OIML R 22, ista je u OIV zbirci metoda i EU
+  direktivi 76/766/EEZ), za stakleni alkoholometar baždaren na 20 °C.
+  Provjereno prema OIV tablicama: odstupanje najviše 0,01 % vol.
+- Razblaživanje uzima u obzir skupljanje zapremine pri miješanju alkohola i
+  vode (10 L od 60 % na 40 % traži 5,14 L vode, a ne 5,00 L).
+- Gradi: praktična formula 1 grad = 2,5 % vol (`PERCENT_PER_GRAD` u `alkohol.js`).
 
 ### Pravila iz uputstva proizvođača indikatora (baždaren na 20 °C)
 

@@ -1,9 +1,10 @@
 // Keš za rad bez interneta. Kod svake izmjene aplikacije povećaj verziju.
-var CACHE = 'rakija-v1';
+var CACHE = 'rakija-v2';
 var ASSETS = [
   './',
   'index.html',
   'styles.css',
+  'alkohol.js',
   'app.js',
   'manifest.webmanifest',
   'icons/icon-192.png',

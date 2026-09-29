@@ -45,24 +45,44 @@
       <svg class="chev" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
 
-    <div class="tile soon" aria-disabled="true">
+    <a class="tile" href="#jacina" data-go="jacina">
       <span class="tile-ico" aria-hidden="true">
-        <svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M24 12v24M12 24h24"/></svg>
+        <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 9a4 4 0 0 1 8 0v19.6a7.5 7.5 0 1 1-8 0z"/>
+          <circle cx="17" cy="34.5" r="3.4" fill="currentColor" stroke="none"/>
+          <path d="M17 15v17"/>
+          <circle cx="32" cy="15" r="3.4"/><circle cx="39.5" cy="31" r="3.4"/><path d="M41 11.5 30.5 34.5"/>
+        </svg>
       </span>
       <span class="tile-text">
-        <strong>Uskoro</strong>
-        <small>Drugi alat — u pripremi</small>
+        <strong>Jačina rakije</strong>
+        <small>Alkoholometar + temperatura → stvarna jačina, % ↔ gradi</small>
       </span>
-    </div>
+      <svg class="chev" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <a class="tile" href="#razblazivanje" data-go="razblazivanje">
+      <span class="tile-ico" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 5.5c6.5 8.4 11.5 15 11.5 21.5a11.5 11.5 0 0 1-23 0c0-6.5 5-13.1 11.5-21.5z"/>
+          <path d="M24 23v10M19 28h10"/>
+        </svg>
+      </span>
+      <span class="tile-text">
+        <strong>Razblaživanje rakije</strong>
+        <small>Koliko litara vode za jačinu koju želiš</small>
+      </span>
+      <svg class="chev" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </nav>
 
-  <p class="version">RakiJA 1.0</p>
+  <p class="version">RakiJA 1.1</p>
 </main>
 
 <!-- ============ INDIKATOR VRENJA ============ -->
 <main id="screen-indikator" class="screen tool" hidden>
   <header class="topbar">
-    <button class="back" type="button" id="backBtn">
+    <button class="back" type="button">
       <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Nazad
     </button>
@@ -95,7 +115,7 @@
     <div class="field">
       <button class="step" type="button" data-for="reading" data-step="-1" aria-label="Smanji očitanu vrijednost">−</button>
       <div class="input-wrap">
-        <input id="reading" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" placeholder="0">
+        <input id="reading" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" placeholder="0" data-min="0" data-next="temp">
         <span class="unit">°Oe</span>
       </div>
       <button class="step" type="button" data-for="reading" data-step="1" aria-label="Povećaj očitanu vrijednost">+</button>
@@ -105,7 +125,7 @@
     <div class="field">
       <button class="step" type="button" data-for="temp" data-step="-1" aria-label="Smanji temperaturu">−</button>
       <div class="input-wrap">
-        <input id="temp" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="done" value="20">
+        <input id="temp" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="done" value="20" data-default="20">
         <span class="unit">°C</span>
       </div>
       <button class="step" type="button" data-for="temp" data-step="1" aria-label="Povećaj temperaturu">+</button>
@@ -123,7 +143,7 @@
     <div class="result-empty" id="resultEmpty">Upiši očitanu vrijednost sa indikatora.</div>
     <div class="result-body" id="resultBody" hidden>
       <div class="result-label">Stvarna vrijednost na 20 °C</div>
-      <div class="big"><span id="corrected">0,0</span><span class="big-unit">°Oe</span></div>
+      <div class="big"><span class="big-num" id="corrected">0,0</span><span class="big-unit">°Oe</span></div>
       <div class="corr" id="corrText"></div>
 
       <div class="scale" id="scale" aria-hidden="true">
@@ -164,8 +184,176 @@
   </section>
 </main>
 
+<!-- ============ JAČINA RAKIJE ============ -->
+<main id="screen-jacina" class="screen tool" hidden>
+  <header class="topbar">
+    <button class="back" type="button">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Nazad
+    </button>
+    <h1>Jačina rakije</h1>
+  </header>
+
+  <section class="card">
+    <h2>Mjerenje alkoholometrom</h2>
+    <div class="seg" role="radiogroup" aria-label="Skala alkoholometra" data-unit-toggle>
+      <button type="button" role="radio" data-unit="vol">% vol</button>
+      <button type="button" role="radio" data-unit="grad">gradi</button>
+    </div>
+
+    <label class="field-label" for="jReading">Izmjerena jačina</label>
+    <div class="field">
+      <button class="step" type="button" data-for="jReading" data-step="-1" aria-label="Smanji jačinu">−</button>
+      <div class="input-wrap">
+        <input id="jReading" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" placeholder="0" data-min="0" data-next="jTemp" data-strength>
+        <span class="unit" data-unit-label>%</span>
+      </div>
+      <button class="step" type="button" data-for="jReading" data-step="1" aria-label="Povećaj jačinu">+</button>
+    </div>
+
+    <label class="field-label" for="jTemp">Temperatura rakije</label>
+    <div class="field">
+      <button class="step" type="button" data-for="jTemp" data-step="-1" aria-label="Smanji temperaturu">−</button>
+      <div class="input-wrap">
+        <input id="jTemp" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="done" value="20" data-default="20">
+        <span class="unit">°C</span>
+      </div>
+      <button class="step" type="button" data-for="jTemp" data-step="1" aria-label="Povećaj temperaturu">+</button>
+    </div>
+    <p class="hint" id="jHint">Alkoholometar je baždaren na 20 °C.</p>
+  </section>
+
+  <section class="card result" aria-live="polite">
+    <div class="result-empty" id="jEmpty">Upiši jačinu koju pokazuje alkoholometar.</div>
+    <div class="result-body" id="jBody" hidden>
+      <div class="result-label">Stvarna jačina na 20 °C</div>
+      <div class="big"><span class="big-num" id="jMain">0,0</span><span class="big-unit" id="jMainUnit">% vol</span></div>
+      <div class="also" id="jAlso"></div>
+      <div class="corr" id="jCorr"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <details class="table-details" open>
+      <summary><h2>Tablica korekcije</h2></summary>
+      <p class="sub" id="jTableSub">Stvarna jačina na 20 °C prema međunarodnim alkoholometrijskim tablicama (OIML).</p>
+      <table class="corr-table">
+        <thead><tr><th>Temperatura</th><th>Stvarno % vol</th><th>Gradi</th></tr></thead>
+        <tbody id="jTable"></tbody>
+      </table>
+    </details>
+  </section>
+
+  <section class="card">
+    <h2>Pretvaranje % ↔ gradi</h2>
+    <div class="conv">
+      <div class="field mini">
+        <div class="input-wrap">
+          <input id="convVol" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-label="Procenti alkohola">
+          <span class="unit">% vol</span>
+        </div>
+      </div>
+      <span class="conv-eq" aria-hidden="true">=</span>
+      <div class="field mini">
+        <div class="input-wrap">
+          <input id="convGrad" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-label="Gradi">
+          <span class="unit">gradi</span>
+        </div>
+      </div>
+    </div>
+    <p class="hint">Praktična formula: 1&nbsp;grad = 2,5&nbsp;% vol (20&nbsp;gradi = 50&nbsp;%).</p>
+  </section>
+</main>
+
+<!-- ============ RAZBLAŽIVANJE ============ -->
+<main id="screen-razblazivanje" class="screen tool" hidden>
+  <header class="topbar">
+    <button class="back" type="button">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Nazad
+    </button>
+    <h1>Razblaživanje rakije</h1>
+  </header>
+
+  <section class="card">
+    <h2>Rakija koju imaš</h2>
+    <div class="seg" role="radiogroup" aria-label="Jedinica jačine" data-unit-toggle>
+      <button type="button" role="radio" data-unit="vol">% vol</button>
+      <button type="button" role="radio" data-unit="grad">gradi</button>
+    </div>
+
+    <label class="field-label" for="rStrength">Izmjerena jačina</label>
+    <div class="field">
+      <button class="step" type="button" data-for="rStrength" data-step="-1" aria-label="Smanji jačinu">−</button>
+      <div class="input-wrap">
+        <input id="rStrength" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" placeholder="0" data-min="0" data-next="rTemp" data-strength>
+        <span class="unit" data-unit-label>%</span>
+      </div>
+      <button class="step" type="button" data-for="rStrength" data-step="1" aria-label="Povećaj jačinu">+</button>
+    </div>
+
+    <label class="field-label" for="rTemp">Temperatura rakije pri mjerenju</label>
+    <div class="field">
+      <button class="step" type="button" data-for="rTemp" data-step="-1" aria-label="Smanji temperaturu">−</button>
+      <div class="input-wrap">
+        <input id="rTemp" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" value="20" data-default="20" data-next="rLiters">
+        <span class="unit">°C</span>
+      </div>
+      <button class="step" type="button" data-for="rTemp" data-step="1" aria-label="Povećaj temperaturu">+</button>
+    </div>
+
+    <label class="field-label" for="rLiters">Količina rakije</label>
+    <div class="field">
+      <button class="step" type="button" data-for="rLiters" data-step="-1" aria-label="Smanji količinu">−</button>
+      <div class="input-wrap">
+        <input id="rLiters" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" placeholder="0" data-min="0" data-next="rTarget">
+        <span class="unit">L</span>
+      </div>
+      <button class="step" type="button" data-for="rLiters" data-step="1" aria-label="Povećaj količinu">+</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Željena jačina</h2>
+    <div class="field">
+      <button class="step" type="button" data-for="rTarget" data-step="-1" aria-label="Smanji željenu jačinu">−</button>
+      <div class="input-wrap">
+        <input id="rTarget" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="done" placeholder="0" data-min="0" data-strength aria-label="Željena jačina">
+        <span class="unit" data-unit-label>%</span>
+      </div>
+      <button class="step" type="button" data-for="rTarget" data-step="1" aria-label="Povećaj željenu jačinu">+</button>
+    </div>
+    <div class="presets" id="rPresets"></div>
+    <p class="hint" id="rHint"></p>
+  </section>
+
+  <section class="card result" aria-live="polite">
+    <div class="result-empty" id="rEmpty">Upiši jačinu, količinu i željenu jačinu.</div>
+    <div class="result-body" id="rBody" hidden>
+      <div class="result-label">Dodaj vode</div>
+      <div class="big"><span class="big-num" id="rWater">0,0</span><span class="big-unit">L</span></div>
+      <div class="also" id="rWaterMl"></div>
+      <div class="corr" id="rTotal"></div>
+      <div class="status info" id="rNote">
+        <span class="status-dot" aria-hidden="true"></span>
+        <div><strong>Uračunato skupljanje</strong><p>Alkohol i voda pri miješanju daju malo manje zapremine od zbira, pa treba nešto više vode nego po prostom računu.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Savjeti</h2>
+    <ul class="tips">
+      <li>Koristi mekanu, prokuvanu i ohlađenu ili destilovanu vodu.</li>
+      <li>Vodu dodaji postepeno, uz miješanje.</li>
+      <li>Poslije miješanja ostavi rakiju da odstoji dan-dva i izmjeri ponovo.</li>
+    </ul>
+  </section>
+</main>
+
 <div class="toast" id="toast" role="status" hidden></div>
 
+<script src="alkohol.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
