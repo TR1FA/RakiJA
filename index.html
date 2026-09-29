@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RakiJA</title>
+<meta name="description" content="RakiJA — indikator vrenja komine sa korekcijom temperature na 20 °C.">
+<meta name="theme-color" content="#FBF6EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17110C" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="RakiJA">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ POČETNI EKRAN ============ -->
+<main id="screen-home" class="screen home">
+  <header class="brand">
+    <img src="icons/icon-192.png" alt="" width="112" height="112">
+    <h1>Raki<span>JA</span></h1>
+    <p>Pomoćnik za domaću rakiju</p>
+  </header>
+
+  <nav class="tiles" aria-label="Alati">
+    <a class="tile" href="#indikator" data-go="indikator">
+      <span class="tile-ico" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 9v29a5 5 0 0 0 5 5h16a5 5 0 0 0 5-5V9"/>
+          <path d="M12.3 24h23.4v14a4 4 0 0 1-4 4H16.3a4 4 0 0 1-4-4z" fill="currentColor" opacity=".22" stroke="none"/>
+          <path d="M24 4v22"/>
+          <ellipse cx="24" cy="33" rx="4.6" ry="7"/>
+          <path d="M24 9h3M24 13h3M24 17h3"/>
+        </svg>
+      </span>
+      <span class="tile-text">
+        <strong>Indikator vrenja komine</strong>
+        <small>Očitavanje + temperatura → stvarna vrijednost na 20 °C</small>
+      </span>
+      <svg class="chev" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <div class="tile soon" aria-disabled="true">
+      <span class="tile-ico" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M24 12v24M12 24h24"/></svg>
+      </span>
+      <span class="tile-text">
+        <strong>Uskoro</strong>
+        <small>Drugi alat — u pripremi</small>
+      </span>
+    </div>
+  </nav>
+
+  <p class="version">RakiJA 1.0</p>
+</main>
+
+<!-- ============ INDIKATOR VRENJA ============ -->
+<main id="screen-indikator" class="screen tool" hidden>
+  <header class="topbar">
+    <button class="back" type="button" id="backBtn">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Nazad
+    </button>
+    <h1>Indikator vrenja komine</h1>
+  </header>
+
+  <section class="card guide">
+    <a class="guide-link" href="https://www.sljivovica.net/odredjivanje-zavrsetka-vrenja.html" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>
+      <span>Uputstvo: određivanje završetka vrenja</span>
+      <svg class="ext" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+    </a>
+    <details>
+      <summary>Kako mjeriti — ukratko</summary>
+      <ol>
+        <li>Skini gornji sloj komine, dobro je promiješaj i ostavi oko 10 minuta da miruje. Ako izlaze mjehurići, kvasac još radi.</li>
+        <li>Uzmi uzorak iz sredine, bez čvrstih dijelova, i procijedi ga kroz gazu dok ne bude bistar.</li>
+        <li>Promućkaj uzorak da izađe CO₂ i sipaj ga u čistu menzuru (250–500 ml).</li>
+        <li>Polako spusti čist i suh indikator — ne smije dodirivati dno ni zidove. Sačekaj da se smiri i da nestanu mjehurići.</li>
+        <li>Očitaj vrijednost u ravni površine tečnosti i izmjeri temperaturu uzorka.</li>
+        <li>Ponavljaj svaka 2–3 dana. Vrenje je završeno kada se vrijednost više ne mijenja i nema mjehurića.</li>
+      </ol>
+    </details>
+  </section>
+
+  <section class="card">
+    <h2>Mjerenje</h2>
+
+    <label class="field-label" for="reading">Očitana vrijednost na indikatoru</label>
+    <div class="field">
+      <button class="step" type="button" data-for="reading" data-step="-1" aria-label="Smanji očitanu vrijednost">−</button>
+      <div class="input-wrap">
+        <input id="reading" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" placeholder="0">
+        <span class="unit">°Oe</span>
+      </div>
+      <button class="step" type="button" data-for="reading" data-step="1" aria-label="Povećaj očitanu vrijednost">+</button>
+    </div>
+
+    <label class="field-label" for="temp">Temperatura uzorka komine</label>
+    <div class="field">
+      <button class="step" type="button" data-for="temp" data-step="-1" aria-label="Smanji temperaturu">−</button>
+      <div class="input-wrap">
+        <input id="temp" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="done" value="20">
+        <span class="unit">°C</span>
+      </div>
+      <button class="step" type="button" data-for="temp" data-step="1" aria-label="Povećaj temperaturu">+</button>
+    </div>
+    <p class="hint" id="inputHint">Indikator je baždaren na 20 °C.</p>
+  </section>
+
+  <section class="card">
+    <h2>Vrsta voća</h2>
+    <p class="sub">Vrenje je završeno kada je stvarna vrijednost u intervalu za to voće.</p>
+    <div class="chips" id="fruits" role="radiogroup" aria-label="Vrsta voća"></div>
+  </section>
+
+  <section class="card result" id="result" aria-live="polite">
+    <div class="result-empty" id="resultEmpty">Upiši očitanu vrijednost sa indikatora.</div>
+    <div class="result-body" id="resultBody" hidden>
+      <div class="result-label">Stvarna vrijednost na 20 °C</div>
+      <div class="big"><span id="corrected">0,0</span><span class="big-unit">°Oe</span></div>
+      <div class="corr" id="corrText"></div>
+
+      <div class="scale" id="scale" aria-hidden="true">
+        <div class="scale-track">
+          <div class="scale-band" id="scaleBand"></div>
+          <div class="scale-mark" id="scaleMark"></div>
+        </div>
+        <div class="scale-ticks"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span></div>
+      </div>
+
+      <div class="status" id="status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <div><strong id="statusTitle"></strong><p id="statusText"></p></div>
+      </div>
+
+      <div class="save-row">
+        <input id="label" type="text" autocomplete="off" maxlength="30" placeholder="Oznaka (npr. Kaca 1)" aria-label="Oznaka kace">
+        <button class="btn-primary" type="button" id="saveBtn">Sačuvaj</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="historyCard" hidden>
+    <h2>Moja mjerenja</h2>
+    <p class="sub">Mjeri svaka 2–3 dana — kad se vrijednost ne mijenja, vrenje je gotovo.</p>
+    <ul class="history" id="history"></ul>
+  </section>
+
+  <section class="card">
+    <details class="table-details" open>
+      <summary><h2>Tablica korekcije</h2></summary>
+      <p class="sub">Za svaki 1 °C iznad 20 °C dodaje se 0,2 °Oe, a za svaki 1 °C ispod 20 °C oduzima se 0,2 °Oe (uputstvo proizvođača indikatora).</p>
+      <table class="corr-table">
+        <thead><tr><th>Temperatura</th><th>Korekcija</th><th id="thValue">Stvarna vrijednost</th></tr></thead>
+        <tbody id="corrTable"></tbody>
+      </table>
+    </details>
+  </section>
+</main>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>
