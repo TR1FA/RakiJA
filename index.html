@@ -22,6 +22,21 @@
 
 <!-- ============ POČETNI EKRAN ============ -->
 <main id="screen-home" class="screen home">
+  <div class="home-bar">
+    <div class="seg seg-icons" role="radiogroup" aria-label="Pismo" id="scriptToggle">
+      <button type="button" role="radio" data-script="lat" aria-label="Latinica" data-raw>Ć</button>
+      <button type="button" role="radio" data-script="cyr" aria-label="Ћирилица" data-raw>Ћ</button>
+    </div>
+    <div class="seg seg-icons" role="radiogroup" aria-label="Tema" id="themeToggle">
+      <button type="button" role="radio" data-theme-choice="light" aria-label="Svijetla tema">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+      </button>
+      <button type="button" role="radio" data-theme-choice="dark" aria-label="Tamna tema">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.6A8.5 8.5 0 0 1 9.4 4 8.5 8.5 0 1 0 20 14.6z"/></svg>
+      </button>
+    </div>
+  </div>
+
   <header class="brand">
     <img src="icons/icon-192.png" alt="" width="112" height="112">
     <h1>Raki<span>JA</span></h1>
@@ -81,23 +96,6 @@
     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
     Preuzmi Android aplikaciju (APK)
   </a>
-
-  <section class="card settings" aria-label="Podešavanja">
-    <div class="set-row">
-      <span class="set-label" id="lblScript">Pismo</span>
-      <div class="seg" role="radiogroup" aria-labelledby="lblScript" id="scriptToggle">
-        <button type="button" role="radio" data-script="lat" data-raw>Latinica</button>
-        <button type="button" role="radio" data-script="cyr" data-raw>Ћирилица</button>
-      </div>
-    </div>
-    <div class="set-row">
-      <span class="set-label" id="lblTheme">Tema</span>
-      <div class="seg" role="radiogroup" aria-labelledby="lblTheme" id="themeToggle">
-        <button type="button" role="radio" data-theme-choice="light">Svijetla</button>
-        <button type="button" role="radio" data-theme-choice="dark">Tamna</button>
-      </div>
-    </div>
-  </section>
 
   <footer class="version">
     <span>RakiJA 1.2</span>

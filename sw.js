@@ -1,5 +1,5 @@
 // Keš za rad bez interneta. Kod svake izmjene aplikacije povećaj verziju.
-var CACHE = 'rakija-v4';
+var CACHE = 'rakija-v5';
 var ASSETS = [
   './',
   'index.html',
