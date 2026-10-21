@@ -296,7 +296,8 @@
             : '<span class="h-delta ' + (d < 0 ? 'down' : 'up') + '">' + fmtSigned(d) + '</span>';
         }
         var f = fruitById(e.fruit);
-        var meta = fmtDate(e.ts) + ' · ' + f.name + (e.label ? ' · ' + esc(e.label) : '');
+        // Oznaka je korisnikov tekst, pa se ne preslovljava (data-raw).
+        var meta = fmtDate(e.ts) + ' · ' + f.name + (e.label ? ' · <span data-raw>' + esc(e.label) + '</span>' : '');
         var raw = 'očitano ' + fmtInput(e.reading) + ' °Oe na ' + fmtInput(e.temp) + ' °C';
         return '<li><div class="h-main"><div class="h-top"><span class="h-val">' + fmt(e.value) +
           ' °Oe</span>' + delta + '</div><div class="h-meta">' + meta + '</div><div class="h-meta">' + raw +
@@ -348,7 +349,7 @@
     el.history.addEventListener('click', function (e) {
       var btn = e.target.closest('[data-del]');
       if (!btn) return;
-      if (!confirm('Obrisati ovo mjerenje?')) return;
+      if (!confirm(window.Pismo ? Pismo.text('Obrisati ovo mjerenje?') : 'Obrisati ovo mjerenje?')) return;
       var ts = Number(btn.getAttribute('data-del'));
       entries = entries.filter(function (x) { return x.ts !== ts; });
       save(STORE_KEY, entries);

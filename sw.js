@@ -1,12 +1,14 @@
 // Keš za rad bez interneta. Kod svake izmjene aplikacije povećaj verziju.
-var CACHE = 'rakija-v3';
+var CACHE = 'rakija-v4';
 var ASSETS = [
   './',
   'index.html',
   'styles.css',
+  'podesavanja.js',
   'alkohol.js',
   'app.js',
   'manifest.webmanifest',
+  'fonts/RakiJASans.woff2',
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/icon-maskable-512.png',
@@ -15,7 +17,10 @@ var ASSETS = [
 ];
 
 self.addEventListener('install', function (e) {
-  e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(ASSETS); }));
+  // cache: 'reload' — nova verzija ne smije pokupiti stare fajlove iz HTTP keša.
+  e.waitUntil(caches.open(CACHE).then(function (c) {
+    return c.addAll(ASSETS.map(function (url) { return new Request(url, { cache: 'reload' }); }));
+  }));
   self.skipWaiting();
 });
 

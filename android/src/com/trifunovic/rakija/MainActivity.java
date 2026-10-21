@@ -3,7 +3,11 @@ package com.trifunovic.rakija;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
@@ -40,6 +44,17 @@ public class MainActivity extends Activity {
         // app.js po ovome zna da radi unutar APK-a.
         s.setUserAgentString(s.getUserAgentString() + " RakiJA-Android");
 
+        // Tema izabrana u aplikaciji (podesavanja.js) boji i statusnu traku.
+        web.addJavascriptInterface(new Object() {
+            @JavascriptInterface
+            public void setDarkTheme(final boolean dark) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() { applySystemBars(dark); }
+                });
+            }
+        }, "RakiJAAndroid");
+
         // Bez WebChromeClient-a WebView ne prikazuje JS dijaloge (confirm).
         web.setWebChromeClient(new WebChromeClient());
         web.setWebViewClient(new WebViewClient() {
@@ -64,6 +79,20 @@ public class MainActivity extends Activity {
         if (state == null || web.restoreState(state) == null) web.loadUrl(START_URL);
     }
 
+    // Iste boje kao --bg u styles.css.
+    @SuppressWarnings("deprecation")
+    private void applySystemBars(boolean dark) {
+        int color = dark ? 0xFF17110C : 0xFFFBF6EF;
+        Window w = getWindow();
+        w.setStatusBarColor(color);
+        w.setNavigationBarColor(color);
+        View decor = w.getDecorView();
+        int light = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+        if (Build.VERSION.SDK_INT >= 26) light |= View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
+        int flags = decor.getSystemUiVisibility();
+        decor.setSystemUiVisibility(dark ? flags & ~light : flags | light);
+    }
+
     private WebResourceResponse serveAsset(Uri uri) {
         if (!HOST.equals(uri.getHost())) return null;
         String path = uri.getPath();
@@ -81,6 +110,7 @@ public class MainActivity extends Activity {
         if (path.endsWith(".js")) return "text/javascript";
         if (path.endsWith(".css")) return "text/css";
         if (path.endsWith(".png")) return "image/png";
+        if (path.endsWith(".woff2")) return "font/woff2";
         if (path.endsWith(".webmanifest")) return "application/manifest+json";
         return "application/octet-stream";
     }

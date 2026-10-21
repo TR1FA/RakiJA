@@ -7,6 +7,7 @@
 <meta name="description" content="RakiJA — indikator vrenja komine sa korekcijom temperature na 20 °C.">
 <meta name="theme-color" content="#FBF6EF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#17110C" media="(prefers-color-scheme: dark)">
+<script src="podesavanja.js"></script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -81,9 +82,26 @@
     Preuzmi Android aplikaciju (APK)
   </a>
 
+  <section class="card settings" aria-label="Podešavanja">
+    <div class="set-row">
+      <span class="set-label" id="lblScript">Pismo</span>
+      <div class="seg" role="radiogroup" aria-labelledby="lblScript" id="scriptToggle">
+        <button type="button" role="radio" data-script="lat" data-raw>Latinica</button>
+        <button type="button" role="radio" data-script="cyr" data-raw>Ћирилица</button>
+      </div>
+    </div>
+    <div class="set-row">
+      <span class="set-label" id="lblTheme">Tema</span>
+      <div class="seg" role="radiogroup" aria-labelledby="lblTheme" id="themeToggle">
+        <button type="button" role="radio" data-theme-choice="light">Svijetla</button>
+        <button type="button" role="radio" data-theme-choice="dark">Tamna</button>
+      </div>
+    </div>
+  </section>
+
   <footer class="version">
-    <span>RakiJA 1.1</span>
-    <span class="author">Trifunović Veljko</span>
+    <span>RakiJA 1.2</span>
+    <span class="author">Peko Popović</span>
   </footer>
 </main>
 

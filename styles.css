@@ -17,30 +17,41 @@
   --info-bg: #F1E9DF;
   --shadow: 0 1px 2px rgba(70, 40, 15, .06), 0 6px 18px rgba(70, 40, 15, .07);
   --radius: 18px;
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #17110C;
-    --surface: #231A13;
-    --surface-2: #2E231A;
-    --text: #F4E9DD;
-    --muted: #B9A594;
-    --line: #3B2E23;
-    --copper: #F0A04B;
-    --copper-strong: #F2A85A;
-    --on-copper: #2A1705;
-    --copper-soft: #3E2917;
-    --ok: #86D9AA;
-    --ok-bg: #173223;
-    --warn: #F5C06E;
-    --warn-bg: #3B2A12;
-    --info: #D7C6B6;
-    --info-bg: #2E241C;
-    --shadow: none;
-  }
+/* Tamna tema: data-theme postavlja podesavanja.js (izbor ili tema telefona). */
+:root[data-theme="dark"] {
+  --bg: #17110C;
+  --surface: #231A13;
+  --surface-2: #2E231A;
+  --text: #F4E9DD;
+  --muted: #B9A594;
+  --line: #3B2E23;
+  --copper: #F0A04B;
+  --copper-strong: #F2A85A;
+  --on-copper: #2A1705;
+  --copper-soft: #3E2917;
+  --ok: #86D9AA;
+  --ok-bg: #173223;
+  --warn: #F5C06E;
+  --warn-bg: #3B2A12;
+  --info: #D7C6B6;
+  --info-bg: #2E241C;
+  --shadow: none;
+  color-scheme: dark;
 }
+
+/* Font za ćirilicu: Source Sans 3 sa srpskim oblicima slova (vidi tools/make_font.py). */
+@font-face {
+  font-family: "RakiJA Sans";
+  src: url("fonts/RakiJASans.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+}
+
+/* Dok se tekst ne preslovi na ćirilicu (vidi podesavanja.js). */
+.cyr-pending body { visibility: hidden; }
 
 * { box-sizing: border-box; }
 
@@ -53,6 +64,10 @@ body {
   font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior-y: none;
+}
+/* Ćirilica: lang="sr-Cyrl" uključuje srpske oblike slova ("locl") u fontu. */
+html[lang="sr-Cyrl"] body {
+  font-family: "RakiJA Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 [hidden] { display: none !important; }
@@ -117,6 +132,11 @@ h2 { font-size: 17px; margin: 0 0 12px; letter-spacing: -.01em; }
   border: 1.5px dashed var(--line); border-radius: 16px;
   color: var(--copper-strong); font-weight: 650; text-decoration: none;
 }
+
+.settings { display: grid; gap: 12px; margin-top: 24px; padding: 14px 16px; }
+.set-row { display: grid; grid-template-columns: 56px 1fr; align-items: center; gap: 10px; }
+.set-label { font-weight: 600; font-size: 15px; color: var(--muted); }
+.settings .seg { margin-bottom: 0; }
 
 .version { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-top: 36px; color: var(--muted); font-size: 13px; }
 .version .author { font-size: 15px; font-weight: 650; color: var(--text); opacity: .75; letter-spacing: .01em; }

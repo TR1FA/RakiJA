@@ -33,6 +33,16 @@ ne može da se instalira preko stare.
 3. **Razblaživanje rakije** — jačina, temperatura i količina rakije + željena
    jačina → koliko litara vode dodati i koliko rakije se dobije.
 
+Na početnom ekranu (od verzije 1.2) biraju se **pismo** (latinica / ćirilica)
+i **tema** (svijetla / tamna); dok se tema ne izabere, prati telefon.
+
+- Tekstovi su pisani latinicom; za ćirilicu `podesavanja.js` preslovljava sve
+  na ekranu. Jedinice (°C, °Oe, % vol, L, ml) ostaju latinicom, a tekst sa
+  `data-raw` (oznaka kace) ostaje kako je upisan.
+- Font za ćirilicu `fonts/RakiJASans.woff2` je Source Sans 3 (Adobe, OFL,
+  srpski oblici slova), smanjen na latinicu i ćirilicu sa
+  `python tools/make_font.py SourceSans3VF-Upright.ttf`. Licenca: `fonts/OFL.txt`.
+
 ### Jačina i razblaživanje
 
 - Korekcija temperature i razblaživanje računaju se po međunarodnoj formuli za

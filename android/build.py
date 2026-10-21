@@ -26,7 +26,8 @@ KEYSTORE = KEYSTORE_DIR / "rakija.keystore"
 PASSWORD_FILE = KEYSTORE_DIR / "lozinka.txt"
 KEY_ALIAS = "rakija"
 
-WEB_FILES = ["index.html", "styles.css", "alkohol.js", "app.js", "manifest.webmanifest"]
+WEB_FILES = ["index.html", "styles.css", "podesavanja.js", "alkohol.js", "app.js", "manifest.webmanifest"]
+WEB_DIRS = ["icons", "fonts"]
 MIN_SDK, TARGET_SDK = 24, 34
 # Verzija koja piše na početnom ekranu ("RakiJA 1.1") je i verzija APK-a.
 VERSION_NAME = re.search(r"RakiJA (\d+(?:\.\d+)+)", (ROOT / "index.html").read_text("utf-8")).group(1)
@@ -62,7 +63,8 @@ def main():
     # 1. Web fajlovi idu u assets/www.
     for name in WEB_FILES:
         shutil.copy2(ROOT / name, BUILD / "assets" / "www" / name)
-    shutil.copytree(ROOT / "icons", BUILD / "assets" / "www" / "icons")
+    for name in WEB_DIRS:
+        shutil.copytree(ROOT / name, BUILD / "assets" / "www" / name)
 
     # 2. Resursi (ikonice, tema) i manifest.
     run(bt / "aapt2.exe", "compile", "--dir", ANDROID / "res", "-o", BUILD / "res.zip")
